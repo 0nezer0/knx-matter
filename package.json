@@ -1,6 +1,6 @@
 {
   "name": "matterbridge-knx",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Matterbridge KNX Plugin",
   "author": "https://github.com/0nezer0/knx-matter",
   "homepage": "https://github.com/0nezer0/knx-matter/blob/main/README.md",
