@@ -1,9 +1,9 @@
 {
-  "name": "matterbridge-plugin-template",
+  "name": "matterbridge-knx",
   "version": "1.0.3",
-  "description": "Matterbridge Template Plugin",
-  "author": "https://github.com/Luligu",
-  "homepage": "https://github.com/Luligu/matterbridge-plugin-template/blob/main/README.md",
+  "description": "Matterbridge KNX Plugin",
+  "author": "https://github.com/0nezer0/knx-matter",
+  "homepage": "https://github.com/0nezer0/knx-matter/blob/main/README.md",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/module.js",
