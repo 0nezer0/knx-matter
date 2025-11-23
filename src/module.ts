@@ -21,35 +21,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/** 
-import { 
-  MatterbridgeDynamicPlatform, 
-  MatterbridgeEndpoint, 
-  onOffOutlet, 
-  PlatformConfig, 
-  PlatformMatterbridge 
-} from 'matterbridge';
 
-import { 
-  AnsiLogger, 
-  LogLevel 
-} from 'matterbridge/logger';
-*/
-
-/** New code */
-import {
-  MatterbridgeAccessoryPlatform,
-  PlatformConfig,
-  powerSource,
-  MatterbridgeEndpoint,
-  temperatureSensor,
-  humiditySensor,
-  pressureSensor,
-  PlatformMatterbridge,
-} from 'matterbridge';
-import { PowerSource, PressureMeasurement, RelativeHumidityMeasurement, TemperatureMeasurement } from 'matterbridge/matter/clusters';
-import { EveHistory, MatterHistory, TemperatureDisplayUnits, WeatherTrend } from 'matter-history';
-import { AnsiLogger } from 'matterbridge/logger';
+import { MatterbridgeDynamicPlatform, MatterbridgeEndpoint, onOffOutlet, PlatformConfig, PlatformMatterbridge } from 'matterbridge';
+import { AnsiLogger, LogLevel } from 'matterbridge/logger';
 
 /**
  * This is the standard interface for Matterbridge plugins.
@@ -58,15 +32,15 @@ import { AnsiLogger } from 'matterbridge/logger';
  * @param {PlatformMatterbridge} matterbridge - An instance of MatterBridge.
  * @param {AnsiLogger} log - An instance of AnsiLogger. This is used for logging messages in a format that can be displayed with ANSI color codes and in the frontend.
  * @param {PlatformConfig} config - The platform configuration.
- * @returns {TemplatePlatform} - An instance of the MatterbridgeAccessory or MatterbridgeDynamicPlatform class. This is the main interface for interacting with the Matterbridge system.
+ * @returns {KNXMatterPlatform} - An instance of the MatterbridgeAccessory or MatterbridgeDynamicPlatform class. This is the main interface for interacting with the Matterbridge system.
  */
-export default function initializePlugin(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig): TemplatePlatform {
-  return new KNX_matterPlatform(matterbridge, log, config);
+export default function initializePlugin(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig): KNXMatterPlatform {
+  return new KNXMatterPlatform(matterbridge, log, config);
 }
 
 // Here we define the TemplatePlatform class, which extends the MatterbridgeDynamicPlatform.
 // If you want to create an Accessory platform plugin, you should extend the MatterbridgeAccessoryPlatform class instead.
-export class TemplatePlatform extends MatterbridgeDynamicPlatform {
+export class KNXMatterPlatform extends MatterbridgeDynamicPlatform {
   constructor(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig) {
     // Always call super(matterbridge, log, config)
     super(matterbridge, log, config);
