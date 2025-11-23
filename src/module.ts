@@ -21,9 +21,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/** 
+import { 
+  MatterbridgeDynamicPlatform, 
+  MatterbridgeEndpoint, 
+  onOffOutlet, 
+  PlatformConfig, 
+  PlatformMatterbridge 
+} from 'matterbridge';
 
-import { MatterbridgeDynamicPlatform, MatterbridgeEndpoint, onOffOutlet, PlatformConfig, PlatformMatterbridge } from 'matterbridge';
-import { AnsiLogger, LogLevel } from 'matterbridge/logger';
+import { 
+  AnsiLogger, 
+  LogLevel 
+} from 'matterbridge/logger';
+*/
+
+/** New code */
+import {
+  MatterbridgeAccessoryPlatform,
+  PlatformConfig,
+  powerSource,
+  MatterbridgeEndpoint,
+  temperatureSensor,
+  humiditySensor,
+  pressureSensor,
+  PlatformMatterbridge,
+} from 'matterbridge';
+import { PowerSource, PressureMeasurement, RelativeHumidityMeasurement, TemperatureMeasurement } from 'matterbridge/matter/clusters';
+import { EveHistory, MatterHistory, TemperatureDisplayUnits, WeatherTrend } from 'matter-history';
+import { AnsiLogger } from 'matterbridge/logger';
 
 /**
  * This is the standard interface for Matterbridge plugins.
@@ -35,7 +61,7 @@ import { AnsiLogger, LogLevel } from 'matterbridge/logger';
  * @returns {TemplatePlatform} - An instance of the MatterbridgeAccessory or MatterbridgeDynamicPlatform class. This is the main interface for interacting with the Matterbridge system.
  */
 export default function initializePlugin(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig): TemplatePlatform {
-  return new TemplatePlatform(matterbridge, log, config);
+  return new KNX_matterPlatform(matterbridge, log, config);
 }
 
 // Here we define the TemplatePlatform class, which extends the MatterbridgeDynamicPlatform.
