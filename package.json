@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luligu/matterbridge-plugin-template.git"
+    "url": "git+https://github.com/0nezer0/knx-matter.git"
   },
   "bugs": {
-    "url": "https://github.com/Luligu/matterbridge-plugin-template/issues"
+    "url": "https://github.com/0nezer0/knx-matter/issues"
   },
   "funding": {
     "type": "buymeacoffee",
