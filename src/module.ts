@@ -32,15 +32,15 @@ import { AnsiLogger, LogLevel } from 'matterbridge/logger';
  * @param {PlatformMatterbridge} matterbridge - An instance of MatterBridge.
  * @param {AnsiLogger} log - An instance of AnsiLogger. This is used for logging messages in a format that can be displayed with ANSI color codes and in the frontend.
  * @param {PlatformConfig} config - The platform configuration.
- * @returns {KNXMatterPlatform} - An instance of the MatterbridgeAccessory or MatterbridgeDynamicPlatform class. This is the main interface for interacting with the Matterbridge system.
+ * @returns {TemplatePlatform} - An instance of the MatterbridgeAccessory or MatterbridgeDynamicPlatform class. This is the main interface for interacting with the Matterbridge system.
  */
-export default function initializePlugin(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig): KNXMatterPlatform {
-  return new KNXMatterPlatform(matterbridge, log, config);
+export default function initializePlugin(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig): TemplatePlatform {
+  return new TemplatePlatform(matterbridge, log, config);
 }
 
 // Here we define the TemplatePlatform class, which extends the MatterbridgeDynamicPlatform.
 // If you want to create an Accessory platform plugin, you should extend the MatterbridgeAccessoryPlatform class instead.
-export class KNXMatterPlatform extends MatterbridgeDynamicPlatform {
+export class TemplatePlatform extends MatterbridgeDynamicPlatform {
   constructor(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig) {
     // Always call super(matterbridge, log, config)
     super(matterbridge, log, config);
@@ -105,8 +105,8 @@ export class KNXMatterPlatform extends MatterbridgeDynamicPlatform {
     // Example: Create and register an outlet device
     // If you want to create an Accessory platform plugin and your platform extends MatterbridgeAccessoryPlatform,
     // instead of createDefaultBridgedDeviceBasicInformationClusterServer, call createDefaultBasicInformationClusterServer().
-    const outlet = new MatterbridgeEndpoint(onOffOutlet, { id: 'outlet1' })
-      .createDefaultBridgedDeviceBasicInformationClusterServer('Outlet', 'SN123456', this.matterbridge.aggregatorVendorId, 'Matterbridge', 'Matterbridge Outlet', 10000, '1.0.0')
+    const outlet = new MatterbridgeEndpoint(onOffOutlet, { id: 'taoutlet1' })
+      .createDefaultBridgedDeviceBasicInformationClusterServer('Outlet', 'SNTA109', this.matterbridge.aggregatorVendorId, 'TA', 'TA Outlet', 10000, '1.0.1')
       .createDefaultPowerSourceWiredClusterServer()
       .addRequiredClusterServers()
       .addCommandHandler('on', (data) => {
